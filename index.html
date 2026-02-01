@@ -1,391 +1,662 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio – Alexandre SAMPEREZ</title>
-  <meta name="description" content="Portfolio d'Alexandre SAMPEREZ – BUT Réseaux & Télécommunication)">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Portfolio – Alexandre SAMPEREZ | R&T</title>
+  <meta name="description" content="Portfolio Alexandre SAMPEREZ – BUT R&T – Réseaux, Systèmes & Cybersécurité">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png"> 
+  
   <style>
-    :root{
-      --bg:#f7f7fb; --text:#111827; --muted:#6b7280; --card:#ffffff; --line:#e5e7eb; --pri:#2563eb; --pri2:#06b6d4;
+    /* --- VARIABLES (Gestion Thème Sombre par défaut) --- */
+    :root {
+      --bg: #050505;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card-bg: rgba(20, 20, 25, 0.6);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --pri: #3b82f6;       /* Bleu Roi */
+      --accent: #06b6d4;    /* Cyan */
+      --code: #10b981;      /* Vert Terminal */
+      --terminal-bg: rgba(10, 10, 15, 0.95);
+      --font-main: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --particle-color: rgba(6, 182, 212, 0.5); /* Cyan particules */
+      --line-color: rgba(59, 130, 246, 0.2);
     }
-    body.dark{ --bg:#0a0a0a; --text:#e5e7eb; --muted:#a3a3a3; --card:#0f0f10; --line:#1f2937; --pri:#38bdf8; --pri2:#6366f1; }
+
+    /* --- MODE CLAIR (Override) --- */
+    [data-theme="light"] {
+      --bg: #f0f4f8;        /* Blanc grisuté tech */
+      --text: #1e293b;      /* Gris très foncé */
+      --muted: #64748b;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: #cbd5e1; /* Gris clair */
+      --pri: #2563eb;       /* Bleu plus vif */
+      --accent: #0891b2;    /* Cyan plus foncé */
+      --code: #059669;
+      --terminal-bg: #1e293b; /* Le terminal reste sombre pour le style */
+      --particle-color: rgba(37, 99, 235, 0.3); /* Bleu particules */
+      --line-color: rgba(37, 99, 235, 0.15);
+    }
+    
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    /* NAV */
-    header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg) 85%, transparent);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:8px;font-weight:700}
-    .navlinks{display:none;gap:6px}
-    @media (min-width:800px){.navlinks{display:flex}}
-    .ghost{border:0;background:transparent;padding:8px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
-    .ghost:hover{background:color-mix(in oklab, var(--line) 60%, transparent)}
-    .iconbtn{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:transparent;cursor:pointer;display:grid;place-items:center}
-    /* HERO */
-    .hero{padding:80px 0}
-    .title{font-size:44px;line-height:1.1;font-weight:800;margin:0}
-    .subtitle{display:block;font-weight:800;font-size:28px;background:linear-gradient(90deg,var(--pri2),var(--pri));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:6px}
-    .tagline{margin-top:12px;font-size:18px;min-height:28px}
-    .pulse{animation:pulse 1.1s infinite steps(1);opacity:.65}
-    @keyframes pulse{50%{opacity:.15}}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 14px;border-radius:12px;background:var(--card);cursor:pointer}
-    .btn.secondary{background:color-mix(in oklab, var(--pri) 10%, var(--card));border-color:color-mix(in oklab, var(--pri) 35%, var(--line))}
-    .btn.primary{background:var(--pri);color:white;border-color:var(--pri)}
-    .btn:hover{transform:translateY(-1px)}
-    /* SECTIONS */
-    section{padding:64px 0;border-top:1px solid var(--line)}
-    h2{margin:0 0 18px;font-size:28px}
-    p{color:var(--muted)}
-    /* CARDS / GRIDS */
-    .grid{display:grid;gap:18px}
-    @media (min-width:700px){.grid.cols-2{grid-template-columns:1fr 1fr}}
-    @media (min-width:960px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
-    .card:hover{border-color:color-mix(in oklab, var(--pri) 40%, var(--line))}
-    .card h3{margin:2px 0 6px;font-size:18px}
-    .muted{color:var(--muted);font-size:14px}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 8px}
-    .badge{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:color-mix(in oklab, var(--bg) 80%, transparent)}
-    ul.clean{padding-left:18px;margin:8px 0}
-    /* Timeline */
-    .timeline{display:grid;gap:14px}
-    .xp{position:relative;padding-left:18px}
-    .xp:before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:999px;background:var(--pri)}
-    /* FOOTER */
-    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:14px}
-    /* small helpers */
-    .spacer{height:4px}
-    .sr{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;border:0;padding:0;margin:-1px}
+    
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font-main);
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* BACKGROUND ANIMATION CANVAS */
+    #network-canvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; opacity: 1; pointer-events: none; transition: opacity 0.3s;
+    }
+
+    a{color:inherit;text-decoration:none;transition:0.3s}
+    .container{max-width:1150px;margin:0 auto;padding:0 24px; position:relative; z-index:2;}
+
+    /* --- NAVIGATION --- */
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(var(--bg), 0.8); /* Astuce pour transparence */
+      background-color: var(--bg); /* Fallback */
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--card-border);
+      transition: background-color 0.3s;
+    }
+    /* Fix backdrop pour light/dark via RGBA dynamique en JS ou simple opacité background */
+    [data-theme="light"] header { background: rgba(240, 244, 248, 0.85); }
+    [data-theme="dark"] header { background: rgba(5, 5, 5, 0.85); }
+
+    .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+    .brand{font-family:var(--font-mono); font-weight:700; color:var(--accent); letter-spacing:-0.5px;}
+    .navlinks{display:none;gap:24px;font-size:14px;font-weight:500}
+    @media (min-width:768px){.navlinks{display:flex}}
+    .navlinks a:hover{color:var(--accent);}
+    
+    /* Boutons Header */
+    .header-actions { display:flex; gap:10px; align-items:center; }
+    .btn-icon {
+      background:transparent; border:1px solid var(--card-border); color:var(--text);
+      width:36px; height:36px; border-radius:6px; cursor:pointer; display:grid; place-items:center;
+      transition:0.3s;
+    }
+    .btn-icon:hover { border-color:var(--accent); color:var(--accent); background:rgba(255,255,255,0.05); }
+
+    .btn-outline{
+      border:1px solid var(--card-border); padding:8px 16px; border-radius:4px;
+      font-size:13px; font-family:var(--font-mono); transition:0.3s;
+      background:transparent; color:var(--text); cursor:pointer;
+    }
+    .btn-outline:hover{border-color:var(--accent); color:var(--accent);}
+
+    /* --- HERO SECTION --- */
+    .hero{
+      min-height:90vh;
+      display:flex; flex-direction:column; justify-content:center;
+      padding-top:80px;
+    }
+    @media (min-width:900px){ 
+      .hero-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:center; } 
+    }
+
+    .hero-text h1{
+      font-size:clamp(40px, 6vw, 64px);
+      line-height:1.1; font-weight:800; margin:0 0 20px 0; letter-spacing:-2px;
+    }
+    
+    /* GLITCH EFFECT (Adapté pour être visible en light mode) */
+    .glitch { position: relative; }
+    .glitch::before, .glitch::after {
+      content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg); /* Important pour cacher le texte dessous */
+    }
+    .glitch::before {
+      left: 2px; text-shadow: -1px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    .glitch::after {
+      left: -2px; text-shadow: -1px 0 #00fff9; clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { clip: rect(31px, 9999px, 94px, 0); }
+      5% { clip: rect(70px, 9999px, 11px, 0); }
+      100% { clip: rect(48px, 9999px, 80px, 0); }
+    }
+    @keyframes glitch-anim2 {
+      0% { clip: rect(65px, 9999px, 100px, 0); }
+      5% { clip: rect(10px, 9999px, 30px, 0); }
+      100% { clip: rect(10px, 9999px, 98px, 0); }
+    }
+
+    .subtitle{
+      font-size:20px; color:var(--accent); margin-bottom:20px; font-family:var(--font-mono);
+      display:flex; align-items:center; gap:10px;
+    }
+    .subtitle::before { content:">"; color:var(--code); }
+
+    .desc{ color:var(--muted); line-height:1.6; max-width:500px; margin-bottom:30px; font-size:16px;}
+
+    /* TERMINAL WINDOW STYLE */
+    .terminal{
+      background:var(--terminal-bg);
+      border:1px solid var(--card-border);
+      border-radius:8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      font-family:var(--font-mono); font-size:13px;
+      overflow:hidden;
+      width:100%;
+      color: #e2e8f0; /* Force le texte clair dans le terminal même en mode light */
+    }
+    .terminal-header{
+      background:rgba(255,255,255,0.05); padding:10px 15px; display:flex; gap:6px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .dot{width:10px; height:10px; border-radius:50%;}
+    .red{background:#ef4444} .yellow{background:#eab308} .green{background:#22c55e}
+    .terminal-body{ padding:20px; color: #94a3b8; height:300px; overflow-y:auto;}
+    .cmd{ color: #e2e8f0; }
+    .out{ color: var(--code); margin-bottom:10px; display:block;}
+    .cursor{ animation: blink 1s infinite; font-weight:bold; color:var(--accent);}
+    @keyframes blink{ 50%{opacity:0} }
+
+    /* BUTTONS */
+    .cta-group{ display:flex; gap:16px; margin-top:30px; }
+    .btn{
+      padding:14px 28px; border-radius:4px; font-weight:600; cursor:pointer;
+      display:inline-flex; align-items:center; gap:10px; transition:0.3s;
+      text-transform:uppercase; font-size:14px; letter-spacing:0.5px;
+    }
+    .btn-pri{
+      background:var(--pri); color:white; border:1px solid var(--pri);
+      box-shadow:0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+    .btn-pri:hover{ box-shadow:0 6px 25px rgba(59, 130, 246, 0.5); transform:translateY(-2px); }
+    .btn-sec{
+      background:transparent; border:1px solid var(--card-border); color:var(--text);
+    }
+    .btn-sec:hover{ border-color:var(--text); background:rgba(125,125,125,0.1); }
+
+    /* --- SECTIONS COMMON --- */
+    section{padding:100px 0;}
+    h2{ font-size:32px; margin-bottom:40px; display:flex; align-items:center; gap:12px; color:var(--text);}
+    h2::before{ content:"#"; color:var(--pri); font-family:var(--font-mono); }
+
+    /* --- SKILLS GRID --- */
+    .grid-skills{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:24px; }
+    .skill-card{
+      background:var(--card-bg); border:1px solid var(--card-border);
+      padding:24px; border-radius:8px; transition:0.3s;
+    }
+    .skill-card:hover{ border-color:var(--accent); box-shadow:0 10px 30px -10px rgba(6, 182, 212, 0.15); transform:translateY(-5px); }
+    .skill-icon{ font-size:24px; margin-bottom:16px; color:var(--accent); }
+    .skill-list{ list-style:none; padding:0; margin:0; font-size:14px; color:var(--muted); line-height:1.8; }
+    .skill-list li::before{ content:"> "; color:var(--pri); font-family:var(--font-mono); font-weight:bold; }
+
+    /* --- PROJECTS --- */
+    .filter-bar{ margin-bottom:40px; display:flex; gap:12px; flex-wrap:wrap; }
+    .filter-pill{
+      background:transparent; border:1px solid var(--card-border);
+      padding:8px 16px; border-radius:50px; cursor:pointer; font-size:13px; color:var(--muted); transition:0.3s;
+    }
+    .filter-pill:hover, .filter-pill.active{ background:var(--pri); color:white; border-color:var(--pri); }
+
+    .project-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:24px; }
+    .project-card{
+      background:var(--card-bg); border:1px solid var(--card-border);
+      border-radius:8px; overflow:hidden; display:flex; flex-direction:column;
+      transition:0.3s; position:relative;
+    }
+    .project-card::before{
+      content:""; position:absolute; top:0; left:0; width:100%; height:2px;
+      background:linear-gradient(90deg, var(--pri), var(--accent));
+      transform:scaleX(0); transform-origin:left; transition:0.4s;
+    }
+    .project-card:hover::before{ transform:scaleX(1); }
+    .project-card:hover{ transform:translateY(-5px); box-shadow:0 10px 30px -10px rgba(0,0,0,0.1); }
+
+    .p-body{ padding:24px; flex-grow:1; display:flex; flex-direction:column; }
+    .p-head{ display:flex; justify-content:space-between; align-items:start; margin-bottom:12px; }
+    .p-title{ font-size:18px; font-weight:700; margin:0; color:var(--text); }
+    .p-folder{ font-family:var(--font-mono); font-size:12px; color:var(--accent); }
+    .p-desc{ font-size:14px; color:var(--muted); margin-bottom:20px; flex-grow:1; }
+    .p-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; }
+    .tag{ font-size:11px; font-family:var(--font-mono); padding:4px 8px; background:rgba(125,125,125,0.1); border-radius:4px; color:var(--text); }
+    
+    .p-link{
+      display:block; text-align:center; padding:12px; font-size:13px; font-weight:600; color:var(--text);
+      border-top:1px solid var(--card-border); background:rgba(125,125,125,0.05);
+    }
+    .p-link:hover{ background:rgba(125,125,125,0.1); color:var(--accent); }
+
+    /* --- XP TIMELINE --- */
+    .timeline{ border-left:2px solid var(--card-border); padding-left:30px; margin-left:10px; }
+    .xp-item{ position:relative; margin-bottom:40px; }
+    .xp-item::after{
+      content:""; position:absolute; left:-36px; top:0; width:10px; height:10px;
+      background:var(--bg); border:2px solid var(--accent); border-radius:50%;
+      transition:background 0.3s;
+    }
+    .xp-date{ font-family:var(--font-mono); color:var(--accent); font-size:12px; margin-bottom:4px; display:block; }
+    .xp-title{ font-size:18px; font-weight:700; margin:0 0 8px 0; color:var(--text); }
+
+    /* --- FOOTER --- */
+    footer{ border-top:1px solid var(--card-border); padding:40px 0; text-align:center; color:var(--muted); font-size:13px; font-family:var(--font-mono); }
+    
+    /* ANIMATIONS */
+    .reveal{ opacity:0; transform:translateY(20px); transition:0.6s ease-out; }
+    .reveal.active{ opacity:1; transform:translateY(0); }
   </style>
 </head>
 <body>
+
+  <canvas id="network-canvas"></canvas>
+
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- simple shield svg -->
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 2l7 3v6c0 5-3.5 9.3-7 11-3.5-1.7-7-6-7-11V5l7-3z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-        </svg>
-        <span>Alexandre SAMPEREZ</span>
+        <span style="color:var(--pri)">./</span>ALEX_SAMPEREZ<span class="cursor">_</span>
       </div>
-      <nav class="navlinks" aria-label="Navigation principale">
-        <a class="ghost" href="#about">À propos</a>
-        <a class="ghost" href="#skills">Compétences</a>
-        <a class="ghost" href="#projects">Projets</a>
-        <a class="ghost" href="#xp">Expériences</a>
+      <nav class="navlinks">
+        <a href="#about">01. PROFIL</a>
+        <a href="#skills">02. COMPETENCES</a>
+        <a href="#projects">03. PROJETS</a>
+        <a href="#xp">04. EXPERIENCES</a>
       </nav>
-      <div style="display:flex;gap:8px">
-        <button id="themeBtn" class="iconbtn" title="Thème (clair/sombre)" aria-label="Basculer le thème">🌙</button>
+      
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Changer le thème">☀</button>
+        <button class="btn-outline" onclick="window.open('CV_SAMPEREZ_Alexandre.pdf')">PDF_CV</button>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="title">
-          Alexandre SAMPEREZ
-          <span class="subtitle">Étudiant en 2e année de Réseaux & Télécommunication </span>
-        </h1>
-        <p class="tagline" id="typing"></p>
-        <div class="cta">
-          <a class="btn secondary" href="https://www.linkedin.com/in/alexandresamperez/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
-          <a class="btn primary" href="CV_SAMPEREZ_Alexandre.pdf" download>⬇️ CV</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- À PROPOS -->
-    <section id="about">
-      <div class="container">
-        <h2>À propos</h2>
-        <p>
-          Étudiant en 2ᵉ année de BUT Réseaux & Télécommunications à Sophia Antipolis,
-          je développe des compétences dans les réseaux, systèmes et télécommunication.
-          Je recherche actuellement un stage de 10 semaines (7 avril – 19 juin 2026) afin de mettre
-          en pratique mes connaissances et contribuer à des projets concrets.
-        </p>
-      </div>
-    </section>
-
-    <!-- COMPÉTENCES -->
-    <section id="skills">
-      <div class="container">
-        <h2>Compétences</h2>
-        <p class="muted">Aperçu des compétences techniques et transversales acquises en formation et en emploi.</p>
-        <div class="grid cols-2">
-          <div class="card">
-            <h3>Réseaux & Infrastructure</h3>
-            <ul class="clean">
-              <li>Conception et administration de réseaux LAN et WAN (Cisco, VLAN, OSPF, HSRP)</li>
-              <li>Configuration de services réseaux (DHCP, DNS, NAT, VPN, SSH)</li>
-              <li>Supervision et analyse de trafic (Wireshark)</li>
-              <li>Mise en œuvre de politiques d’adressage IPv4/IPv6 et segmentation sécurisée</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Systèmes & Virtualisation</h3>
-            <ul class="clean">
-              <li>Administration Linux et Windows Server (gestion des services, des droits et des utilisateurs)</li>
-              <li>Déploiement et gestion d’environnements virtualisés (VirtualBox)</li>
-              <li>Scripts d’automatisation pour l’administration (Bash, Python)</li>
-              <li>Surveillance des performances et durcissement des systèmes</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Programmation & Développement</h3>
-            <ul class="clean">
-              <li>Langages : Python, C, Java</li>
-              <li>Développement web et scripts côté serveur (HTML, CSS, PHP, JS)</li>
-              <li>Exploitation de bases de données (MySQL, SQLite)</li>
-              <li>Automatisation de tests de sécurité et collecte de logs</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Compétences en Cybersécurité</h3>
-            <ul class="clean">
-              <li>Audit et sécurisation d’infrastructures réseau</li>
-              <li>Tests d’intrusion et analyse de vulnérabilités (Kali Linux, nmap, John the Ripper, Hydra)</li>
-              <li>Configuration et gestion de pare-feux (iptables, pfSense)</li>
-              <li>Surveillance et réponse à incident (logs, Wireshark, analyse de malware)</li>
-              <li>Sensibilisation à l’hygiène informatique et à la protection des données</li>
-            </ul>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-text reveal active">
+          <div class="subtitle">BUT R&T (2e Année)</div>
+          <h1 class="glitch" data-text="Alexandre SAMPEREZ">Alexandre SAMPEREZ</h1>
+          <p class="desc">
+           Étudiant en 2ᵉ année de BUT Réseaux & Télécommunications à Sophia Antipolis, je développe des compétences dans les réseaux, systèmes et télécommunication. Je recherche actuellement un stage de 10 semaines (7 avril – 19 juin 2026) afin de mettre en pratique mes connaissances et contribuer à des projets concrets.
+            <br><br>
+            <span style="color:var(--accent)">🟢 Recherche Stage 10 semaines • Avril-Juin 2026</span>
+          </p>
+          <div class="cta-group">
+            <a href="#projects" class="btn btn-pri">Voir mes projets</a>
+            <a href="https://linkedin.com/in/alexandresamperez" target="_blank" class="btn btn-sec">LinkedIn</a>
           </div>
         </div>
-      </div>
-    </section>
 
-   <!-- PROJETS -->
-<section id="projects">
-  <div class="container">
-    <h2>Projets</h2>
-    <p class="muted">Sélection de projets académiques (SAÉ) et professionnels. Chaque carte comporte les points clés, des tags et un rapport téléchargeable.</p>
-
-    <div class="grid cols-3">
-    <!-- 1 -->
-<article class="card">
-  <h3>SAÉ 3.02 – Développement d’applications communicantes</h3>
-  <p class="muted">
-    Conception d’un ensemble d’applications (site web, programme Java et application Android)
-    destinées à détecter, centraliser et visualiser des vulnérabilités réseau.
-    Le projet a permis de mettre en œuvre une communication client-serveur
-    et un échange de données via des API JSON.
-  </p>
-  <div class="badges">
-    <span class="badge">Développement</span>
-    <span class="badge">Java</span>
-    <span class="badge">Android</span>
-    <span class="badge">API REST</span>
-    <span class="badge">Sécurité Web</span>
-  </div>
-  <ul class="clean muted">
-    <li>Site web listant les failles détectées</li>
-    <li>Application Java pour la détection</li>
-    <li>Application Android (JSON)</li>
-    <li>Gestion de projet sur GitHub</li>
-  </ul>
-  <a class="btn secondary" href="#" target="_blank" rel="noreferrer">🚧 En cours</a>
-</article>
-
-
-      <!-- 2 -->
-        <article class="card">
-        <h3>SAÉ 3.Cyber.03 – Projet cybersécurité</h3>
-        <p class="muted">Réalisation d’un audit de sécurité complet sur un environnement réseau simulé. L’objectif : identifier les vulnérabilités présentes, proposer des contre-mesures et appliquer un durcissement des systèmes selon les bonnes pratiques.</p>
-       <div class="badges">
-        <span class="badge">Cybersécurité</span>
-        <span class="badge">Audit</span>
-        <span class="badge">Durcissement</span>
-        <span class="badge">Linux</span>
-        <span class="badge">Pentest</span>
-        </div>
-        <ul class="clean muted">
-          <li>Analyse de vulnérabilités</li>
-          <li>Contre-mesures & durcissement</li>
-          <li>Restitution des résultats</li>
-        </ul>
-          <a class="btn secondary" href="#" target="_blank" rel="noreferrer">🚧 En cours</a>
-      </article>  
-
-      <!-- 3 -->
-
-       <article class="card">
-              <h3>Projet Thalès – SAE23 & SAE24 (Gestion de configuration & bonnes pratiques)</h3>
-              <p class="muted">Collaboration avec l’entreprise Thalès dans le cadre d’un projet orienté cybersécurité et gestion de configuration. L’objectif était de créer un guide de bonnes pratiques pour renforcer la sécurité interne et normaliser les procédures techniques au sein des systèmes Thalès.</p>
-             <div class="badges">
-              <span class="badge">Cybersécurité</span>
-              <span class="badge">Python</span>
-              <span class="badge">Gestion de configuration</span>
-              <span class="badge">Thalès</span>
-              <span class="badge">Bonnes pratiques</span>
+        <div class="terminal reveal active">
+          <div class="terminal-header">
+            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            <span style="margin-left:10px; opacity:0.5">root@kali:~</span>
+          </div>
+          <div class="terminal-body" id="term-body">
             </div>
+        </div>
+      </div>
+    </section>
 
-              <ul class="clean muted">
-                <li>Cahier des charges & plan de validation</li>
-                <li>Dev Python + hébergement Raspberry Pi</li>
-                <li>Bonnes pratiques documentaires</li>
-                <li>Respect des standards de sécurité</li>
-              </ul>
-                <a class="btn secondary" href="Thales13_SAE23_24_rapport.docx.pdf" target="_blank" rel="noreferrer">📄 Voir le rapport</a>
-            </article>
-      <!-- 4 -->
-      <article class="card">
-        <h3>Projet Thalès – Gestion photo avionique</h3>
-        <p class="muted">Développement d’une application Python connectée à un Raspberry Pi pour automatiser la prise et la gestion de photos sur des bancs de tests avioniques. Le projet incluait la conception d’un mini-site web sécurisé permettant de consulter les photos et les journaux d’événements.</p>
-       <div class="badges">
-  <span class="badge">Python</span>
-  <span class="badge">Raspberry Pi</span>
-  <span class="badge">Base de données</span>
-  <span class="badge">Automatisation</span>
-  <span class="badge">Sécurité</span>
-</div>
+    <section id="skills" class="container">
+      <h2 class="reveal">Technologie & Stack</h2>
+      <div class="grid-skills">
+        
+        <div class="skill-card reveal">
+          <div class="skill-icon">🔒</div>
+          <h3 style="margin-top:0; color:var(--text)">Cyber & Sécurité</h3>
+          <ul class="skill-list">
+            <li>Analyses Vulnérabilités (CVE)</li>
+            <li>Pentest (Nmap, Hydra, Burp)</li>
+            <li>Hardening Linux/Windows</li>
+            <li>VPN (IPSec/OpenVPN) & DMZ</li>
+            <li>Firewalling (PfSense, Iptables)</li>
+          </ul>
+        </div>
 
-        <ul class="clean muted">
-          <li>Site web sécurisé (rôles, logs)</li>
-          <li>Automatisation capture photo</li>
-          <li>Plan de tests + BDD</li>
-        </ul>
-         <a class="btn secondary" href="rapport sae23_24 Groupe 1.pdf" target="_blank" rel="noreferrer">📄 Voir le rapport</a>
-      </article>
+        <div class="skill-card reveal">
+          <div class="skill-icon">🌐</div>
+          <h3 style="margin-top:0; color:var(--text)">Réseau & Infra</h3>
+          <ul class="skill-list">
+            <li>Cisco IOS (Switch/Routeur/ASA)</li>
+            <li>Routage Dyn. (OSPF, EIGRP, BGP)</li>
+            <li>VLANs, STP, HSRP, NAT/PAT</li>
+            <li>Wireshark & Analyse de trames</li>
+            <li>IPv4 / IPv6 Subnetting</li>
+          </ul>
+        </div>
 
-      <!-- 5 -->
-      <article class="card">
-        <h3>SAÉ 22 – Mesure & caractérisation LoRa</h3>
-        <p class="muted">Étude et mise en œuvre d’un système de communication LoRa (Long Range) entre plusieurs modules pour analyser les performances de transmission radio. Réalisation d’une campagne de mesures et interprétation des résultats à travers des graphiques et rapports techniques.</p>
-       <div class="badges">
-  <span class="badge">IoT</span>
-  <span class="badge">Radio</span>
-  <span class="badge">LoRa</span>
-  <span class="badge">Analyse de signal</span>
-  <span class="badge">Transmission</span>
-</div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">⚙️</div>
+          <h3 style="margin-top:0; color:var(--text)">SysAdmin & Virtu</h3>
+          <ul class="skill-list">
+            <li>Linux (Debian/RedHat) & Bash</li>
+            <li>Windows Server (AD, DNS, DHCP)</li>
+            <li>Virtualisation (VMware, VirtualBox)</li>
+            <li>Services (Apache, SSH, FTP)</li>
+            <li>Conteneurisation (Docker - Initiation)</li>
+          </ul>
+        </div>
 
-        <ul class="clean muted">
-          <li>Chaîne d’acquisition</li>
-          <li>Courbes & interprétation</li>
-          <li>Rapport synthétique</li>
-        </ul>
-         <a class="btn secondary" href="Sujet de seance encadrée N°7_DROUSSI_SAMPEREZ_ABDALLAH_DESMET.pdf" target="_blank" rel="noreferrer">📄 Voir le rapport</a>
-      </article>
+        <div class="skill-card reveal">
+          <div class="skill-icon">🐍</div>
+          <h3 style="margin-top:0; color:var(--text)">Dev & Automation</h3>
+          <ul class="skill-list">
+            <li>Python (Scripting, Sockets, Scapy)</li>
+            <li>Web (HTML5, CSS3, PHP, SQL)</li>
+            <li>APIs REST & JSON</li>
+            <li>Git & Versionning</li>
+            <li>Automatisation de tâches</li>
+          </ul>
+        </div>
 
-      <!-- 6 -->
-<article class="card">
-  <h3>SAÉ 21 – Construire un réseau pour une petite structure</h3>
-  <p class="muted">
-    Conception et déploiement complet de l’infrastructure réseau d’une petite entreprise.
-    Le projet visait à répondre à un cahier des charges complet incluant la mise en place
-    d’un réseau interne, d’une DMZ, d’un pare-feu ASA et d’une interconnexion sécurisée
-    avec un fournisseur d’accès Internet.
-  </p>
- <div class="badges">
-  <span class="badge">Cisco</span>
-  <span class="badge">Pare-feu ASA</span>
-  <span class="badge">DMZ</span>
-  <span class="badge">EIGRP</span>
-  <span class="badge">Routage</span>
-</div>
+      </div>
+    </section>
 
+    <section id="projects" class="container">
+      <h2 class="reveal">Projets Académiques & Pros</h2>
+      
+      <div class="filter-bar reveal">
+        <button class="filter-pill active" onclick="filter('all')">Tout</button>
+        <button class="filter-pill" onclick="filter('cyber')">Cyber/Audit</button>
+        <button class="filter-pill" onclick="filter('net')">Réseaux</button>
+        <button class="filter-pill" onclick="filter('dev')">Dev/IoT</button>
+      </div>
 
-  <ul class="clean muted">
-    <li>Plan d’adressage complet pour VLANs internes et DMZ</li>
-    <li>Configuration du cœur de réseau (MLS + Switchs d’accès)</li>
-    <li>Mise en place d’un pare-feu ASA avec ACL et inspection</li>
-    <li>Intégration du routeur FAI et NAT statique/dynamique</li>
-    <li>Interconnexion externe avec routage dynamique EIGRP</li>
-  </ul>
-    <!-- Bouton PDF -->
-  <a class="btn secondary" href="RAPPORT_SAE21_DROUSSI_SAMPEREZ_GRIRA.pdf" target="_blank" rel="noreferrer">
-    📄 Voir le rapport
-  </a>
-
-</article>
-    </div>
-  </div>
-</section>
-
-
-    <!-- EXPÉRIENCES -->
-    <section id="xp">
-      <div class="container">
-        <h2>Expériences</h2>
-        <p class="muted">Emplois saisonniers m’ayant apporté sens du service, rigueur et adaptabilité.</p>
-        <div class="timeline">
-          <div class="xp card">
-            <h3>Employé polyvalent – TotalEnergies (Aire de Canaver)</h3>
-            <div class="muted">juin 2024 – août. 2024 & juin 2025 • 4 mois • Puget-sur-Argens</div>
-            <ul class="clean muted">
-              <li>Cuisson de baguettes</li>
-              <li>Réapprovisionnement, mise en rayon, gestion des DLC</li>
-              <li>Vente & encaissement</li>
-            </ul>
+      <div class="project-grid">
+        
+        <div class="project-card reveal" data-cat="cyber dev">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Hardening Thales</h3>
+              <span class="p-folder">SAE_23</span>
+            </div>
+            <p class="p-desc">Développement d'outils Python pour l'audit de configuration et rédaction d'un référentiel de bonnes pratiques de sécurité (durcissement).</p>
+            <div class="p-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Audit</span>
+              <span class="tag">Compliance</span>
+            </div>
           </div>
-          <div class="xp card">
-            <h3>Boulanger – Proxi Sud-Est (Camping La Baume, Fréjus)</h3>
-            <div class="muted">juin 2023 – août 2023 • 3 mois</div>
-            <ul class="clean muted">
-              <li>Confection de baguettes & viennoiseries</li>
-              <li>Gestion des stocks, commandes</li>
-              <li>Réception livraisons & mise en rayon</li>
-            </ul>
+          <a href="Thales13_SAE23_24_rapport.docx.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Architecture Sécurisée & DMZ</h3>
+              <span class="p-folder">SAE_21</span>
+            </div>
+            <p class="p-desc">Conception d'un réseau d'entreprise complet : Segmentation VLAN, Routage EIGRP, Pare-feu Cisco ASA et zone DMZ pour les services web.</p>
+            <div class="p-tags">
+              <span class="tag">Cisco ASA</span>
+              <span class="tag">EIGRP</span>
+              <span class="tag">ACLs</span>
+            </div>
           </div>
-          <div class="xp card">
-            <h3>Ouvrier – Le Lys de Provence</h3>
-            <div class="muted">juil. 2022 • 1 mois</div>
-            <ul class="clean muted">
-              <li>Création de cadres (bois & aluminium)</li>
-              <li>Livraison des cadres</li>
-              <li>Emballage pour expédition</li>
-            </ul>
+          <a href="RAPPORT_SAE21_DROUSSI_SAMPEREZ_GRIRA.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Pentest & Vulnérabilités</h3>
+              <span class="p-folder">SAE_Cyber</span>
+            </div>
+            <p class="p-desc">Audit offensif sur infrastructure simulée : Scan de ports, identification CVE, exploitation et correctifs (patching).</p>
+            <div class="p-tags">
+              <span class="tag">Kali</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">OpenVAS</span>
+            </div>
           </div>
+          <a href="#" class="p-link" style="color:var(--muted)">EN COURS</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="dev">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">App Fullstack Vulns</h3>
+              <span class="p-folder">SAE_3.02</span>
+            </div>
+            <p class="p-desc">Création d'une chaîne logicielle complète (Client Java, App Android, Serveur) pour monitorer des alertes de sécurité via API.</p>
+            <div class="p-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Android Studio</span>
+              <span class="tag">REST API</span>
+            </div>
+          </div>
+          <a href="#" class="p-link" style="color:var(--muted)">EN COURS</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="dev">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Automatisation Banc de Test</h3>
+              <span class="p-folder">Thales_IoT</span>
+            </div>
+            <p class="p-desc">Scripting Python sur Raspberry Pi pour automatiser la prise de vue avionique. Interface Web de gestion sécurisée.</p>
+            <div class="p-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">Web</span>
+            </div>
+          </div>
+          <a href="rapport sae23_24 Groupe 1.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+         <div class="project-card reveal" data-cat="net">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Analyse Signal LoRa</h3>
+              <span class="p-folder">SAE_22</span>
+            </div>
+            <p class="p-desc">Mise en œuvre d'une chaîne de transmission radio longue portée. Analyse spectrale et optimisation du signal.</p>
+            <div class="p-tags">
+              <span class="tag">LoRaWAN</span>
+              <span class="tag">Radio</span>
+              <span class="tag">Physique</span>
+            </div>
+          </div>
+          <a href="Sujet de seance encadrée N°7_DROUSSI_SAMPEREZ_ABDALLAH_DESMET.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="xp" class="container">
+      <h2 class="reveal">Expériences & Jobs</h2>
+      <div class="timeline reveal">
+        <div class="xp-item">
+          <span class="xp-date">JUIN 2024 - AOUT 2024 & 2025</span>
+          <h3 class="xp-title">Employé Polyvalent | TotalEnergies</h3>
+          <p class="desc" style="margin:0">Gestion autonome de station, rigueur procédurale, responsabilité sécurité/incendie.</p>
+        </div>
+        <div class="xp-item">
+          <span class="xp-date">ETE 2023</span>
+          <h3 class="xp-title">Boulanger | Proxi Sud-Est</h3>
+          <p class="desc" style="margin:0">Production, gestion de flux tendu, respect des normes d'hygiène.</p>
+        </div>
+        <div class="xp-item">
+          <span class="xp-date">JUILLET 2022</span>
+          <h3 class="xp-title">Ouvrier de Production | Le Lys de Provence</h3>
+          <p class="desc" style="margin:0">Fabrication et assemblage (Bois/Aluminium), logistique et préparation d'expédition.</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <span>© <span id="year"></span> Alexandre SAMPEREZ — Tous droits réservés.</span>
-      <div style="display:flex;gap:12px">
-        <a class="muted" href="https://www.linkedin.com/in/alexandresamperez/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
+    <div class="container">
+      <p>alexandre.samperez@etu.univ-cotedazur.fr</p>
+      <p style="opacity:0.5; margin-top:10px">© <span id="year"></span> - Conçu & Développé par Alexandre S.</p>
     </div>
   </footer>
 
   <script>
-    // Typing effect
-    const line = "Sécuriser. Automatiser. Innover au service du réseau.";
-    const out = document.getElementById("typing");
-    let i = 0;
-    const tick = () => {
-      out.innerHTML = line.slice(0, i++) + ' <span class="pulse">▌</span>';
-      if (i <= line.length) requestAnimationFrame(()=>setTimeout(tick, 28));
-    };
-    tick();
+    // 1. THEME MANAGEMENT
+    const themeBtn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check local storage or preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeBtn.textContent = savedTheme === 'light' ? '🌙' : '☀';
 
-    // Theme toggle (persist in localStorage)
-    const btn = document.getElementById('themeBtn');
-    const apply = (mode) => {
-      if(mode==='dark'){ document.body.classList.add('dark'); btn.textContent='☀️'; }
-      else{ document.body.classList.remove('dark'); btn.textContent='🌙'; }
-    };
-    const saved = localStorage.getItem('theme');
-    apply(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'));
-    btn.addEventListener('click',()=>{
-      const isDark = document.body.classList.toggle('dark');
-      localStorage.setItem('theme', isDark?'dark':'light');
-      btn.textContent = isDark?'☀️':'🌙';
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+      themeBtn.textContent = target === 'light' ? '🌙' : '☀';
+      // Force update of particle color in the next animation frame
     });
 
-    // Current year
+    // 2. TERMINAL TYPEWRITER EFFECT
+    const termBody = document.getElementById('term-body');
+    const commands = [
+      { text: "whoami", type: "cmd" },
+      { text: "Alexandre SAMPEREZ, Étudiant BUT R&T", type: "out" },
+      { text: "cat skills.txt | grep 'Network'", type: "cmd" },
+      { text: "> Cisco CCNA (notions), OSPF, VLANs, Wireshark", type: "out" },
+      { text: "./find_internship.sh --date='Avril 2026'", type: "cmd" },
+      { text: "Searching... Match Found! Available for 10 weeks.", type: "out" },
+      { text: "contact --email", type: "cmd" },
+      { text: "alexandre.samperez@etu.univ-cotedazur.fr", type: "out", style:"color:var(--accent)" }
+    ];
+
+    let cmdIndex = 0;
+    let charIndex = 0;
+    
+    function typeTerminal() {
+      if (cmdIndex >= commands.length) return;
+      
+      const line = commands[cmdIndex];
+      let currentLineDiv = termBody.lastElementChild;
+      if (!currentLineDiv || charIndex === 0) {
+        currentLineDiv = document.createElement('div');
+        currentLineDiv.className = line.type;
+        if(line.type === 'cmd') currentLineDiv.innerHTML = '<span style="color:var(--code)">$</span> ';
+        if(line.style) currentLineDiv.style = line.style;
+        termBody.appendChild(currentLineDiv);
+      }
+
+      if (line.type === 'cmd') {
+        if (charIndex < line.text.length) {
+          currentLineDiv.innerHTML += line.text.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeTerminal, 50 + Math.random()*50);
+        } else {
+          cmdIndex++;
+          charIndex = 0;
+          setTimeout(typeTerminal, 800);
+        }
+      } else {
+        currentLineDiv.innerText = line.text;
+        cmdIndex++;
+        charIndex = 0;
+        termBody.scrollTop = termBody.scrollHeight;
+        setTimeout(typeTerminal, 200);
+      }
+    }
+    setTimeout(typeTerminal, 1000);
+
+    // 3. NETWORK CANVAS ANIMATION
+    const canvas = document.getElementById('network-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw(color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(window.innerWidth / 15, 100);
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    initParticles();
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      
+      // Get colors dynamically from CSS variables
+      const style = getComputedStyle(document.documentElement);
+      const pColor = style.getPropertyValue('--particle-color').trim();
+      const lColor = style.getPropertyValue('--line-color').trim();
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw(pColor);
+        for (let j = i; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.strokeStyle = lColor.replace('0.2', (1 - dist/150) * 0.4); // Dynamic opacity
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 4. FILTERING & SCROLL REVEAL
+    function filter(cat) {
+      document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        if(cat === 'all' || card.dataset.cat.includes(cat)) card.style.display = 'flex';
+        else card.style.display = 'none';
+      });
+    }
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active') });
+    }, {threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
