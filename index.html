@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio – Alexandre SAMPEREZ | R&T</title>
+  <meta name="description" content="Portfolio Alexandre SAMPEREZ – BUT R&T – Réseaux, Systèmes & Cybersécurité">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png"> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="network-canvas"></canvas>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span style="color:var(--pri)">./</span>ALEX_SAMPEREZ<span class="cursor">_</span>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">01. PROFIL</a>
+        <a href="competences.html">02. COMPÉTENCES</a>
+        <a href="projects.html">03. PROJETS</a>
+        <a href="experiences.html">04. EXPÉRIENCES</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Changer le thème">☀</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-text reveal active">
+          <div class="subtitle">BUT R&T (2e Année)</div>
+          <h1 class="glitch" data-text="Alexandre SAMPEREZ">Alexandre SAMPEREZ</h1>
+          <p class="desc">
+            Administrateur réseau en devenir. Je maîtrise l'infrastructure (Cisco/Linux), j'automatise les déploiements (Python/Bash) et je sécurise les échanges de données.
+            <br><br>
+            <span style="color:var(--accent)">🟢 Recherche Alternance • 2026-2027 </span>
+          </p>
+          <div class="cta-group">
+            <a href="CV_SAMPEREZ_Alexandre.pdf" target="_blank" class="btn btn-pri">📄 MON CV</a>
+            <a href="https://linkedin.com/in/alexandresamperez" target="_blank" class="btn btn-sec">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="terminal reveal active">
+          <div class="terminal-header">
+            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            <span style="margin-left:10px; opacity:0.5">root@kali:~</span>
+          </div>
+          <div class="terminal-body" id="term-body">
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container" style="padding-top: 20px;">
+      <h2 class="reveal">01. SYSTEM.INFO() // À PROPOS</h2>
+      
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>
+            Passionné par les rouages du Web et de l'infrastructure informatique, je suis actuellement étudiant en deuxième année de <strong>BUT Réseaux et Télécommunications à l'Université Côte d'Azur</strong>. Mon objectif à terme est de garantir la haute disponibilité, l'intégrité et la sécurité des systèmes d'information en entreprise.
+          </p>
+          <p>
+            J'ai construit mon profil autour de trois piliers fondamentaux : <strong>Le réseau</strong> (architecture et routage), <strong>le système</strong> (déploiement et hardening OS) et <strong>l'automatisation</strong> (scripting Python/Bash pour éliminer les tâches chronophages).
+          </p>
+          <p>
+            Curieux et investi, je monte régulièrement des environnements virtuels (Labs) pour tester de nouvelles vulnérabilités ou de nouveaux protocoles. Aujourd'hui, je cherche à mettre cette théorie à l'épreuve du terrain au sein d'une équipe technique formatrice.
+          </p>
+        </div>
+
+        <div class="id-card">
+          <div class="id-item">
+            <span class="id-label">Statut Actuel</span>
+            <span class="id-value">Étudiant BUT R&T (Bac+2 validé en cours)</span>
+          </div>
+          <div class="id-item">
+            <span class="id-label">Objectif 2026 - 2027</span>
+            <span class="id-value">Contrat d'Apprentissage (12 à 24 mois)</span>
+          </div>
+          <div class="id-item">
+            <span class="id-label">Domaines cibles</span>
+            <span class="id-value">Admin Réseau/Système, Cybersécurité, DevOps</span>
+          </div>
+          <div class="id-item">
+            <span class="id-label">Mobilité Géographique</span>
+            <span class="id-value">Alpes-Maritimes (06) / Télétravail possible</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>alexandre.samperez@etu.univ-cotedazur.fr</p>
+      <p style="opacity:0.5; margin-top:10px">© <span id="year"></span> - Conçu & Développé par Alexandre S.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

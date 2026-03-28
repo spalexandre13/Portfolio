@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projets – Alexandre SAMPEREZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png"> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="network-canvas"></canvas>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span style="color:var(--pri)">./</span>ALEX_SAMPEREZ<span class="cursor">_</span>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">01. PROFIL</a>
+        <a href="competences.html">02. COMPÉTENCES</a>
+        <a href="projects.html">03. PROJETS</a>
+        <a href="experiences.html">04. EXPÉRIENCES</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Changer le thème">☀</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="projects" class="container">
+      <h2 class="reveal">03. PROJETS & MISSIONS D'INGÉNIERIE</h2>
+      
+      <div class="filter-bar reveal">
+        <button class="filter-pill active" onclick="filter('all')">Tout</button>
+        <button class="filter-pill" onclick="filter('cyber')">Cyber/Audit</button>
+        <button class="filter-pill" onclick="filter('net')">Réseaux & Télécoms</button>
+        <button class="filter-pill" onclick="filter('dev')">Dev & Auto</button>
+        <button class="filter-pill" onclick="filter('system')">Système & Cloud</button>
+      </div>
+
+      <div class="project-grid">
+        
+        <div class="project-card reveal" data-cat="cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Analyse de Malwares & Rétro-ingénierie</h3>
+              <span class="p-folder">Projet_Malware</span>
+            </div>
+            <p class="p-desc">Étude du comportement de codes malveillants. Analyse statique et dynamique, identification des signatures, et compréhension des mécanismes de persistance ou d'évasion.</p>
+            <div class="p-tags">
+              <span class="tag">Reverse Engineering</span>
+              <span class="tag">Sandbox</span>
+              <span class="tag">Cyber</span>
+            </div>
+          </div>
+          <a href="Rapport_Malware_SAMPEREZ_Alexandre.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Audit de Sécurité (Pentest) - Phase 1</h3>
+              <span class="p-folder">TP1_Pentest</span>
+            </div>
+            <p class="p-desc">Phase de reconnaissance et de scanning. Cartographie de la surface d'attaque, identification des services exposés et recherche active de vulnérabilités potentielles.</p>
+            <div class="p-tags">
+              <span class="tag">Reconnaissance</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">OSINT</span>
+            </div>
+          </div>
+          <a href="RapportPenTest_TP1_SAMPEREZ_Alexandre.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Audit de Sécurité (Pentest) - Phase 4</h3>
+              <span class="p-folder">TP4_Pentest</span>
+            </div>
+            <p class="p-desc">Phase d'exploitation avancée et d'élévation de privilèges (PrivEsc). Mise en pratique de vecteurs d'attaque spécifiques et maintien de l'accès sur la machine cible.</p>
+            <div class="p-tags">
+              <span class="tag">Exploitation</span>
+              <span class="tag">Metasploit</span>
+              <span class="tag">PrivEsc</span>
+            </div>
+          </div>
+          <a href="RapportPenTest_TP4_SAMPEREZ_Alexandre.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Tests d'Intrusion & Exploitation globale</h3>
+              <span class="p-folder">SAE_34</span>
+            </div>
+            <p class="p-desc">Audit offensif complet sur une infrastructure simulée. Détection des failles, identification de CVE, exploitation active et proposition de correctifs de sécurité.</p>
+            <div class="p-tags">
+              <span class="tag">Kali Linux</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">Vulnérabilités</span>
+            </div>
+          </div>
+          <a href="RAPPORT_SAE34_SAMPEREZ_Alexandre.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Étude des Systèmes de Transmission TV</h3>
+              <span class="p-folder">SAE_31</span>
+            </div>
+            <p class="p-desc">Étude théorique et pratique de la diffusion de la télévision par satellite et faisceau hertzien. Analyse des techniques de codage de canal (Reed-Solomon) et des modulations numériques (QAM, OFDM).</p>
+            <div class="p-tags">
+              <span class="tag">Télécommunications</span>
+              <span class="tag">Satellite</span>
+              <span class="tag">Signal</span>
+            </div>
+          </div>
+          <a href="CR_saé31.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Création d'un Lab Réseau Sur-Mesure</h3>
+              <span class="p-folder">Projet_R409</span>
+            </div>
+            <p class="p-desc">Conception intégrale d'un sujet de Travaux Pratiques (TP) de niveau avancé. Création du scénario, design de l'architecture opérateur, intégration de protocoles de routage complexes et rédaction du cahier des charges technique.</p>
+            <div class="p-tags">
+              <span class="tag">Design Réseau</span>
+              <span class="tag">Architecture</span>
+              <span class="tag">Ingénierie</span>
+            </div>
+          </div>
+          <a href="R409_TP_BADAOUI_SAMPEREZ.docx (1).pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Étude Physique : Support de Transmission</h3>
+              <span class="p-folder">SAE_13</span>
+            </div>
+            <p class="p-desc">Analyse approfondie des caractéristiques d'un câble coaxial (Couche 1 du modèle OSI). Étude de la propagation du signal, mesure de l'atténuation, calculs d'impédance et évaluation des performances matérielles.</p>
+            <div class="p-tags">
+              <span class="tag">Couche Physique</span>
+              <span class="tag">Signal</span>
+              <span class="tag">Coaxial</span>
+            </div>
+          </div>
+          <a href="SA Alexandre-SAE13-Rapport.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Conception d'Architecture Sécurisée & DMZ</h3>
+              <span class="p-folder">SAE_21</span>
+            </div>
+            <p class="p-desc">Design d'un réseau d'entreprise robuste : Segmentation logique (VLANs), implémentation du routage EIGRP, déploiement d'un pare-feu Cisco ASA et isolation des services Web en DMZ.</p>
+            <div class="p-tags">
+              <span class="tag">Cisco ASA</span>
+              <span class="tag">EIGRP</span>
+              <span class="tag">Routage</span>
+            </div>
+          </div>
+          <a href="RAPPORT_SAE21_DROUSSI_SAMPEREZ_GRIRA.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="net iot">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Déploiement d'un Réseau IoT LoRaWAN</h3>
+              <span class="p-folder">SAE_22</span>
+            </div>
+            <p class="p-desc">Mise en œuvre d'une chaîne de transmission radio longue portée pour objets connectés. Analyse spectrale, étude de la couche physique et optimisation du signal.</p>
+            <div class="p-tags">
+              <span class="tag">LoRaWAN</span>
+              <span class="tag">Radio</span>
+              <span class="tag">IoT</span>
+            </div>
+          </div>
+          <a href="Sujet de seance encadrée N°7_DROUSSI_SAMPEREZ_ABDALLAH_DESMET.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="dev system iot">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Intégration Solution Full-Stack IoT (Thales)</h3>
+              <span class="p-folder">SAE_23_24</span>
+            </div>
+            <p class="p-desc">Conception intégrale d'un banc de test automatisé pour composants spatiaux. Configuration système d'un Raspberry Pi, pilotage matériel via Python (caméra) et développement d'une interface Web complète (PHP/HTML) connectée à une base de données MariaDB.</p>
+            <div class="p-tags">
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">Python</span>
+              <span class="tag">LAMP / BDD</span>
+            </div>
+          </div>
+          <a href="Thales13_SAE23_24_rapport.docx.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="dev system">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Automatisation de Banc de Test (Thales)</h3>
+              <span class="p-folder">Thales_IoT</span>
+            </div>
+            <p class="p-desc">Développement de scripts Python embarqués sur Raspberry Pi pour automatiser la prise de vue de matériel avionique. Création d'une interface Web de gestion.</p>
+            <div class="p-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">IoT</span>
+            </div>
+          </div>
+          <a href="rapport sae23_24 Groupe 1.pdf" target="_blank" class="p-link">VOIR LE RAPPORT</a>
+        </div>
+
+        <div class="project-card reveal" data-cat="dev cyber">
+          <div class="p-body">
+            <div class="p-head">
+              <h3 class="p-title">Développement d'Application Sécurisée</h3>
+              <span class="p-folder">SAE_3.02</span>
+            </div>
+            <p class="p-desc">Création d'une chaîne logicielle complète (Client Java, Application Android, Serveur Web) pour la centralisation et le monitoring d'alertes de sécurité via API REST.</p>
+            <div class="p-tags">
+              <span class="tag">Java</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Client-Serveur</span>
+            </div>
+          </div>
+          <a href="presentation.pdf" target="_blank" class="p-link">VOIR LA PRÉSENTATION</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>alexandre.samperez@etu.univ-cotedazur.fr</p>
+      <p style="opacity:0.5; margin-top:10px">© <span id="year"></span> - Conçu & Développé par Alexandre S.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

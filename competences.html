@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Competences – Alexandre SAMPEREZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="network-canvas"></canvas>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span style="color:var(--pri)">./</span>ALEX_SAMPEREZ<span class="cursor">_</span>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">01. PROFIL</a>
+        <a href="competences.html">02. COMPETENCES</a>
+        <a href="projects.html">03. PROJETS</a>
+        <a href="experiences.html">04. EXPERIENCES</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Changer le theme">☀</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="skills" class="container">
+
+      <h2 class="section-heading reveal">
+        <span class="heading-icon">&#x2699;</span>
+        COMPETENCES_TECHNIQUES
+      </h2>
+      <div class="heading-line"></div>
+
+      <!-- FILTER BAR -->
+      <div class="sk-filter-bar reveal">
+        <button class="sk-pill active" onclick="filterSkills('all')">Tous</button>
+        <button class="sk-pill" onclick="filterSkills('net')">Réseaux</button>
+        <button class="sk-pill" onclick="filterSkills('sys')">Système</button>
+        <button class="sk-pill" onclick="filterSkills('cyber')">Cyber</button>
+        <button class="sk-pill" onclick="filterSkills('iot')">IoT</button>
+        <button class="sk-pill" onclick="filterSkills('dev')">Dev</button>
+        <button class="sk-pill" onclick="filterSkills('soft')">Transversal</button>
+      </div>
+
+      <!-- SKILLS GRID -->
+      <div class="sk-grid reveal">
+
+        <!-- Réseaux & Infra -->
+        <div class="sk-card" data-cat="net" data-accent="var(--accent)">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F5A7;</span>
+            <span class="sk-badge" style="color:var(--accent); border-color:var(--accent);">NET_ADMIN</span>
+          </div>
+          <div class="sk-terminal-line">$ show ip route | include OSPF</div>
+          <h3 class="sk-card-title">Réseaux & Infra Cisco</h3>
+          <ul class="sk-list">
+            <li><span class="sk-dots" data-level="4"></span> Switching avancé (VLAN, STP, LACP, HSRP)</li>
+            <li><span class="sk-dots" data-level="4"></span> Routage dynamique (OSPF, EIGRP, BGP)</li>
+            <li><span class="sk-dots" data-level="4"></span> Services réseau (DHCP, DNS, NAT)</li>
+            <li><span class="sk-dots" data-level="3"></span> Double-stack IPv4 / IPv6</li>
+            <li><span class="sk-dots" data-level="3"></span> VPN site-à-site (IPSec, OpenVPN)</li>
+            <li><span class="sk-dots" data-level="4"></span> Analyse de trames (Wireshark, TCPdump)</li>
+          </ul>
+        </div>
+
+        <!-- Système & Virtualisation -->
+        <div class="sk-card" data-cat="sys" data-accent="var(--accent)">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F4BB;</span>
+            <span class="sk-badge" style="color:var(--accent); border-color:var(--accent);">SYS_ADMIN</span>
+          </div>
+          <div class="sk-terminal-line">$ apt update && apt upgrade -y</div>
+          <h3 class="sk-card-title">Systèmes & Virtualisation</h3>
+          <ul class="sk-list">
+            <li><span class="sk-dots" data-level="4"></span> Administration Linux (Debian, Ubuntu)</li>
+            <li><span class="sk-dots" data-level="3"></span> Windows Server & Active Directory</li>
+            <li><span class="sk-dots" data-level="3"></span> GPO, DNS, DHCP côté serveur</li>
+            <li><span class="sk-dots" data-level="3"></span> Hyperviseurs (Proxmox, VMware)</li>
+            <li><span class="sk-dots" data-level="3"></span> Déploiement Web (Apache, Nginx, MariaDB)</li>
+            <li><span class="sk-dots" data-level="2"></span> Docker & Docker Compose</li>
+          </ul>
+        </div>
+
+        <!-- Cybersécurité -->
+        <div class="sk-card" data-cat="cyber" data-accent="#a855f7">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F6E1;</span>
+            <span class="sk-badge" style="color:#a855f7; border-color:#a855f7;">SEC_OPS</span>
+          </div>
+          <div class="sk-terminal-line" style="color:#a855f7;">$ msfconsole -q -x "use exploit/"</div>
+          <h3 class="sk-card-title">Sécurité Offensive & Défensive</h3>
+          <ul class="sk-list">
+            <li><span class="sk-dots" data-level="4"></span> Firewalling (Cisco ASA, pfSense, iptables)</li>
+            <li><span class="sk-dots" data-level="3"></span> Pentest & recon (Kali, Nmap, Metasploit)</li>
+            <li><span class="sk-dots" data-level="3"></span> Exploitation & élévation de privilèges</li>
+            <li><span class="sk-dots" data-level="3"></span> Hardening OS & chiffrement (TLS, PKI)</li>
+            <li><span class="sk-dots" data-level="2"></span> Analyse de malwares & rétro-ingénierie</li>
+          </ul>
+        </div>
+
+        <!-- Télécoms & IoT -->
+        <div class="sk-card" data-cat="iot" data-accent="var(--accent)">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F4E1;</span>
+            <span class="sk-badge" style="color:var(--accent); border-color:var(--accent);">IOT_TEL</span>
+          </div>
+          <div class="sk-terminal-line">$ lora-cli --join OTAA --sf 7</div>
+          <h3 class="sk-card-title">Télécoms & Objets Connectés</h3>
+          <ul class="sk-list">
+            <li><span class="sk-dots" data-level="3"></span> LoRaWAN & réseaux LPWAN</li>
+            <li><span class="sk-dots" data-level="3"></span> Modulations numériques (QAM, OFDM)</li>
+            <li><span class="sk-dots" data-level="3"></span> Raspberry Pi & Arduino (capteurs, caméra)</li>
+            <li><span class="sk-dots" data-level="2"></span> Supports physiques (fibre, coaxial, cuivre)</li>
+          </ul>
+        </div>
+
+        <!-- Dev & Scripting -->
+        <div class="sk-card sk-wide" data-cat="dev" data-accent="#a855f7">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&lt;/&gt;</span>
+            <span class="sk-badge" style="color:#a855f7; border-color:#a855f7;">DEV</span>
+          </div>
+          <div class="sk-terminal-line" style="color:#a855f7;">$ python3 -c "import scapy; sniff()"</div>
+          <h3 class="sk-card-title">Code & Automatisation</h3>
+          <div class="sk-split">
+            <ul class="sk-list">
+              <li><span class="sk-dots" data-level="4"></span> Python (scripting, Scapy, sockets)</li>
+              <li><span class="sk-dots" data-level="3"></span> Bash & automatisation sysadmin</li>
+              <li><span class="sk-dots" data-level="3"></span> Java & apps client-serveur</li>
+            </ul>
+            <ul class="sk-list">
+              <li><span class="sk-dots" data-level="2"></span> Web (HTML, CSS, JS, PHP)</li>
+              <li><span class="sk-dots" data-level="3"></span> BDD (MySQL, MariaDB, SQLite)</li>
+              <li><span class="sk-dots" data-level="3"></span> Git, GitHub & versionning</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Savoir-être -->
+        <div class="sk-card" data-cat="soft" data-accent="#eab308">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F465;</span>
+            <span class="sk-badge" style="color:#eab308; border-color:#eab308;">HUMAN</span>
+          </div>
+          <div class="sk-terminal-line" style="color:#eab308;">$ cat /etc/personality.conf</div>
+          <h3 class="sk-card-title">Savoir-être</h3>
+          <ul class="sk-list">
+            <li><span class="sk-bar" style="--bar-w:95%; --bar-color:#eab308;"></span> Curiosité & veille techno</li>
+            <li><span class="sk-bar" style="--bar-w:90%; --bar-color:#eab308;"></span> Esprit d'équipe</li>
+            <li><span class="sk-bar" style="--bar-w:90%; --bar-color:#eab308;"></span> Persévérance</li>
+            <li><span class="sk-bar" style="--bar-w:85%; --bar-color:#eab308;"></span> Polyvalence & adaptabilité</li>
+            <li><span class="sk-bar" style="--bar-w:85%; --bar-color:#eab308;"></span> Rigueur & honnêteté</li>
+          </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="sk-card" data-cat="soft" data-accent="#22c55e">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F3C5;</span>
+            <span class="sk-badge" style="color:#22c55e; border-color:#22c55e;">CERTIFS</span>
+          </div>
+          <div class="sk-terminal-line" style="color:#22c55e;">$ openssl verify -CAfile certs/</div>
+          <h3 class="sk-card-title">Certifications</h3>
+          <ul class="sk-list sk-list-certs">
+            <li><span class="sk-cert-status ok"></span> CCNA 1 — Introduction to Networks</li>
+            <li><span class="sk-cert-status ok"></span> PIX — Certification numérique</li>
+            <li><span class="sk-cert-status ok"></span> Bac STI2D — Spécialité SIN</li>
+          </ul>
+        </div>
+
+        <!-- Toolbox -->
+        <div class="sk-card sk-toolbox sk-wide" data-cat="all" data-accent="var(--pri)">
+          <div class="sk-card-header">
+            <span class="sk-card-icon">&#x1F9F0;</span>
+            <span class="sk-badge" style="color:var(--pri); border-color:var(--pri);">TOOLBOX</span>
+          </div>
+          <div class="sk-terminal-line">$ which --all</div>
+          <h3 class="sk-card-title">Environnement & Outils</h3>
+          <div class="sk-chips">
+            <span class="sk-chip sk-chip--cyan">Kali Linux</span>
+            <span class="sk-chip sk-chip--cyan">Wireshark</span>
+            <span class="sk-chip sk-chip--cyan">Cisco Packet Tracer</span>
+            <span class="sk-chip sk-chip--purple">Nmap</span>
+            <span class="sk-chip sk-chip--purple">Metasploit</span>
+            <span class="sk-chip sk-chip--purple">Burp Suite</span>
+            <span class="sk-chip sk-chip--cyan">VS Code</span>
+            <span class="sk-chip sk-chip--cyan">VMware</span>
+            <span class="sk-chip sk-chip--cyan">Proxmox</span>
+            <span class="sk-chip sk-chip--green">Git</span>
+            <span class="sk-chip sk-chip--green">Docker</span>
+            <span class="sk-chip sk-chip--yellow">GNS3</span>
+            <span class="sk-chip sk-chip--purple">pfSense</span>
+            <span class="sk-chip sk-chip--yellow">MariaDB</span>
+            <span class="sk-chip sk-chip--cyan">Raspberry Pi OS</span>
+            <span class="sk-chip sk-chip--green">Bash</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LANGUES -->
+      <h2 class="section-heading reveal" style="margin-top:80px;">
+        <span class="heading-icon">&#x1F310;</span>
+        LANGUES
+      </h2>
+      <div class="heading-line"></div>
+
+      <div class="lang-grid reveal">
+        <div class="lang-card">
+          <div class="lang-circle">FR</div>
+          <h4 class="lang-name">Français</h4>
+          <span class="lang-level" style="color:var(--accent)">Langue Maternelle</span>
+          <div class="lang-bar-track"><div class="lang-bar-fill" style="--lang-w:100%; --lang-color:var(--accent);"></div></div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-circle">EN</div>
+          <h4 class="lang-name">Anglais</h4>
+          <span class="lang-level" style="color:var(--pri)">Avancé (C1)</span>
+          <div class="lang-bar-track"><div class="lang-bar-fill" style="--lang-w:85%; --lang-color:var(--pri);"></div></div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-circle">ES</div>
+          <h4 class="lang-name">Espagnol</h4>
+          <span class="lang-level" style="color:#eab308">Élémentaire (A2)</span>
+          <div class="lang-bar-track"><div class="lang-bar-fill" style="--lang-w:30%; --lang-color:#eab308;"></div></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>alexandre.samperez@etu.univ-cotedazur.fr</p>
+      <p style="opacity:0.5; margin-top:10px">&copy; <span id="year"></span> - Concu & Developpe par Alexandre S.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

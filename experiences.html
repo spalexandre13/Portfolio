@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Expériences – Alexandre SAMPEREZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png"> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="network-canvas"></canvas>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span style="color:var(--pri)">./</span>ALEX_SAMPEREZ<span class="cursor">_</span>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html">01. PROFIL</a>
+        <a href="competences.html">02. COMPÉTENCES</a>
+        <a href="projects.html">03. PROJETS</a>
+        <a href="experiences.html">04. EXPÉRIENCES</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Changer le thème">☀</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="xp" class="container">
+      <h2 class="reveal">04. HISTORIQUE D'EXPÉRIENCES</h2>
+      
+      <p class="desc reveal" style="margin-bottom: 50px; text-align: center; margin-left: auto; margin-right: auto;">
+        Analyse des expériences professionnelles. Extraction des <span style="color:var(--accent)">Soft Skills</span> applicables à l'administration système, la gestion des ressources et l'autonomie.
+      </p>
+
+      <div class="tech-timeline">
+        
+        <div class="tech-xp-card reveal">
+          <div class="xp-header">
+            <div class="xp-title-wrapper">
+              <h3>Employé Polyvalent</h3>
+              <span class="xp-company">TotalEnergies (Aire de Canaver)</span>
+            </div>
+            <span class="xp-date-badge">ÉTÉS 2024 & 2025</span>
+          </div>
+          <p class="xp-desc">
+            Polyvalence et gestion des priorités au sein d'une aire d'autoroute à fort passage. Prise en charge de l'encaissement et de l'accompagnement client. Responsabilité logistique via le réapprovisionnement continu des rayons, l'entretien global des infrastructures (intérieurs/extérieurs) et la production ponctuelle en boulangerie.
+          </p>
+          <div class="xp-soft-skills">
+            <span class="xp-skill-tag">Relation client (Support)</span>
+            <span class="xp-skill-tag">Polyvalence</span>
+            <span class="xp-skill-tag">Logistique</span>
+            <span class="xp-skill-tag">Rigueur</span>
+          </div>
+        </div>
+
+        <div class="tech-xp-card reveal">
+          <div class="xp-header">
+            <div class="xp-title-wrapper">
+              <h3>Boulanger</h3>
+              <span class="xp-company">Proxi (Camping La Baume La Palmeraie, Fréjus)</span>
+            </div>
+            <span class="xp-date-badge">ÉTÉ 2023</span>
+          </div>
+          <p class="xp-desc">
+            Gestion complète et autonome de l'espace boulangerie en période d'affluence touristique. Production intensive en flux tendu (fabrication de plus de 500 baguettes et viennoiseries par jour). Anticipation des besoins via la gestion rigoureuse des stocks et le réapprovisionnement stratégique des rayons.
+          </p>
+          <div class="xp-soft-skills">
+            <span class="xp-skill-tag">Gestion des stocks</span>
+            <span class="xp-skill-tag">Travail sous pression</span>
+            <span class="xp-skill-tag">Autonomie</span>
+            <span class="xp-skill-tag">Organisation</span>
+          </div>
+        </div>
+
+        <div class="tech-xp-card reveal">
+          <div class="xp-header">
+            <div class="xp-title-wrapper">
+              <h3>Ouvrier de Production</h3>
+              <span class="xp-company">Le Lys de Provence</span>
+            </div>
+            <span class="xp-date-badge">JUILLET 2022</span>
+          </div>
+          <p class="xp-desc">
+            Fabrication et assemblage minutieux de structures en Bois et Aluminium. Implication dans la chaîne logistique, de la production de base jusqu'à la préparation soignée des expéditions.
+          </p>
+          <div class="xp-soft-skills">
+            <span class="xp-skill-tag">Travail d'équipe</span>
+            <span class="xp-skill-tag">Minutie</span>
+            <span class="xp-skill-tag">Processus logistique</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>alexandre.samperez@etu.univ-cotedazur.fr</p>
+      <p style="opacity:0.5; margin-top:10px">© <span id="year"></span> - Conçu & Développé par Alexandre S.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
