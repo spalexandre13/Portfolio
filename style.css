@@ -31,7 +31,7 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; overflow-x:hidden;}
 
 body{
   margin:0;
@@ -259,7 +259,7 @@ footer{ border-top:1px solid var(--card-border); padding:40px 0; text-align:cent
    --- SECTION HEADINGS ---
    ========================================= */
 .section-heading {
-  font-size: 28px;
+  font-size: clamp(18px, 5vw, 28px);
   font-weight: 800;
   text-align: center;
   display: flex;
@@ -269,6 +269,7 @@ footer{ border-top:1px solid var(--card-border); padding:40px 0; text-align:cent
   margin-bottom: 8px;
   font-family: var(--font-mono);
   letter-spacing: 1px;
+  word-break: break-word;
 }
 .section-heading::before { display: none; }
 .heading-icon { font-size: 26px; opacity: 0.9; }
@@ -475,6 +476,9 @@ footer{ border-top:1px solid var(--card-border); padding:40px 0; text-align:cent
   opacity: 0.5;
   margin-bottom: 10px;
   transition: opacity 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .sk-card:hover .sk-terminal-line { opacity: 0.9; }
 
