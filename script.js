@@ -16,7 +16,23 @@ if(themeBtn) {
   });
 }
 
-// 2. TERMINAL TYPEWRITER EFFECT
+// 2. MOBILE BURGER MENU
+const burger = document.getElementById('burger');
+const navlinks = document.querySelector('.navlinks');
+if (burger && navlinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    navlinks.classList.toggle('mobile-open');
+  });
+  navlinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      navlinks.classList.remove('mobile-open');
+    });
+  });
+}
+
+// 3. TERMINAL TYPEWRITER EFFECT
 const termBody = document.getElementById('term-body');
 if (termBody) {
   const commands = [
